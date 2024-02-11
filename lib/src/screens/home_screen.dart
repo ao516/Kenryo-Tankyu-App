@@ -15,7 +15,7 @@ class _HomeScreenState extends State<HomeScreen> {
       body:  SafeArea(
         child: Column(
           children: [
-            Text("aa"),
+            Text("HomeScreen"),
           ],
         ),
       ),

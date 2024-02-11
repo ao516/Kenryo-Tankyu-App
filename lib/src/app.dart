@@ -1,5 +1,7 @@
+import 'package:app_develop/src/components/footer.dart';
 import 'package:app_develop/src/components/header.dart';
-import 'package:app_develop/src/screens/home_screen.dart';
+import 'package:app_develop/src/screen_control.dart';
+import 'package:app_develop/src/screen_control_bloc.dart';
 import 'package:flutter/material.dart';
 
 
@@ -11,44 +13,25 @@ class ScreenManageWidget extends StatefulWidget {
 }
 
 class _ScreenManageWidgetState extends State<ScreenManageWidget> {
-  static const _screens = [
-    HomeScreen(),
-    HomeScreen(),
-    HomeScreen(),
-  ];
-
-  int _selectedIndex = 0;
+  late ViewCtrlBloc viewCtrl;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: const Header(),
-      body:  _screens[_selectedIndex],
-      bottomNavigationBar: BottomNavigationBar(
-        currentIndex: _selectedIndex,
-        onTap: _onItemTapped,
-        items: const[
-            BottomNavigationBarItem(
-              icon: Icon(Icons.home),
-              label: 'ホーム',
-            ),
-            BottomNavigationBarItem(
-                icon: Icon(Icons.explore),
-                label:  '探索'
-            ),
-            BottomNavigationBarItem(
-                icon: Icon(Icons.bookmarks),
-                label:  'ライブラリ'
-            ),
-
-          ],
-      ),
+      body:  Screen(viewCtrl: viewCtrl.viewStream),
+      bottomNavigationBar: Footer(viewCtrl: viewCtrl.viewSink),
     );
   }
+  @override
+  void initState() {
+    viewCtrl = ViewCtrlBloc();
+    super.initState();
+  }
 
-  void _onItemTapped(int index) {
-    setState(() {
-      _selectedIndex = index;
-    });
+  @override
+  void dispose() {
+    viewCtrl.dispose();
+    super.dispose();
   }
 }

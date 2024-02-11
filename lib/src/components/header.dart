@@ -1,5 +1,4 @@
 import 'package:app_develop/src/screens/search_screen.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 class Header extends StatelessWidget implements PreferredSizeWidget {
@@ -24,6 +23,11 @@ class Header extends StatelessWidget implements PreferredSizeWidget {
               child: Container(
                 width: 340,
                 margin: const EdgeInsets.symmetric(vertical: 10.0),
+                child: const Column(
+                  children: [
+                    Text('検索できるよーう',style: TextStyle(fontSize: 13),)
+                  ],
+                ),
               ),
             ),
           ),
