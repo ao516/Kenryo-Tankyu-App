@@ -1,5 +1,6 @@
 import 'package:app_develop/src/router.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 class InitialHeader extends StatelessWidget implements PreferredSizeWidget {
   @override
@@ -19,7 +20,7 @@ class InitialHeader extends StatelessWidget implements PreferredSizeWidget {
           ),
           child: Center(
             child: InkWell(
-              onTap: () => goRouter.push('/search'),
+              onTap: () => context.go('/search'),
               child: Container(
                 width: 340,
                 margin: const EdgeInsets.symmetric(vertical: 10.0),
