@@ -1,43 +1,50 @@
+import 'package:app_develop/src/components/initial_header.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 class Footer extends StatefulWidget {
-  final Sink<int> viewCtrl;
-  const Footer({super.key,  required this.viewCtrl});
+  final Widget child;
+  const Footer({super.key,  required this.child});
 
   @override
   State<Footer> createState() => _FooterState();
 }
 
 class _FooterState extends State<Footer> {
-  int pageIndex = 0;
-
-  navigationItem() {
-    return const [
-      BottomNavigationBarItem(
-        icon: Icon(Icons.home),
-        label: 'ホーム',
-      ),
-      BottomNavigationBarItem(
-        icon: Icon(Icons.explore),
-        label: '探索',
-      ),
-      BottomNavigationBarItem(
-        icon: Icon(Icons.bookmarks),
-        label: '探索',
-      ),
-    ];
-  }
-
+  int _selectedIndex = 0;
   @override
   Widget build(BuildContext context) {
-    return BottomNavigationBar(
-      currentIndex: pageIndex,
-      onTap: (pageIndex) {
-        widget.viewCtrl.add(pageIndex); // <- sinkにインデックスを流す
-      },
-      items: navigationItem(),
+    return Scaffold(
+      appBar: const InitialHeader(),
+      bottomNavigationBar: NavigationBar(
+        selectedIndex: _selectedIndex,
+        destinations: const <Widget>[
+          NavigationDestination(icon: Icon(Icons.home), label: 'ホーム'),
+          NavigationDestination(icon: Icon(Icons.explore), label: '探索'),
+          NavigationDestination(icon: Icon(Icons.bookmarks), label: 'ライブラリ'),
+        ],
+        onDestinationSelected: (index) {
+          switch (index) {
+            case 0:
+              _selectedIndex = 0;
+              context.push('/home');
+              break;
+            case 1:
+              _selectedIndex = 1;
+              context.push('/explore');
+              break;
+            case 2:
+              _selectedIndex = 2;
+              context.push('/library');
+              break;
+            default:
+              _selectedIndex = 0;
+              context.push('/home');
+          }
+          setState(() {});
+        },
+      ),
+      body: widget.child,
     );
-
   }
-
 }

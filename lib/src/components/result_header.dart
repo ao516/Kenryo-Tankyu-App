@@ -29,6 +29,7 @@ class _ResultHeaderState extends State<ResultHeader> {
             child: InkWell(
               onTap: () => Navigator.pop(context),
               child: Container(
+
                 width: 340,
                 margin: const EdgeInsets.symmetric(vertical: 10.0),
                 child: Column(

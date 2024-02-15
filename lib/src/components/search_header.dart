@@ -1,6 +1,7 @@
-import 'package:app_develop/src/screens/result_screen.dart';
+import 'package:app_develop/src/screens/search/result_screen.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 class SearchHeader extends StatefulWidget implements PreferredSizeWidget{
   @override
@@ -42,16 +43,12 @@ class _SearchHeaderState extends State<SearchHeader> {
                   focusedBorder: InputBorder.none,
                   isDense: true,
                 ),
-                onSubmitted: (text) => _openResultScreen(context,text),
+                onSubmitted: (text) => context.push('/resultList'),
               ),
             ),
           ),
         ),
       ),
     );
-  }
-  
-  _openResultScreen(BuildContext context,String resultWord) {
-    Navigator.push(context, MaterialPageRoute(builder: (context) => ResultScreen(resultWord: resultWord,)));
   }
 }

@@ -1,10 +1,10 @@
-import 'package:app_develop/src/screens/search_screen.dart';
+import 'package:app_develop/src/router.dart';
 import 'package:flutter/material.dart';
 
-class Header extends StatelessWidget implements PreferredSizeWidget {
+class InitialHeader extends StatelessWidget implements PreferredSizeWidget {
   @override
   Size get preferredSize => const Size.fromHeight(kToolbarHeight);
-  const Header({super.key});
+  const InitialHeader({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -19,13 +19,13 @@ class Header extends StatelessWidget implements PreferredSizeWidget {
           ),
           child: Center(
             child: InkWell(
-              onTap: () => _openSearchScreen(context),
+              onTap: () => goRouter.push('/search'),
               child: Container(
                 width: 340,
                 margin: const EdgeInsets.symmetric(vertical: 10.0),
                 child: const Column(
                   children: [
-                    Text('検索できるよーう',style: TextStyle(fontSize: 13),)
+                    Text('検索バー',style: TextStyle(fontSize: 13),)
                   ],
                 ),
               ),
@@ -36,9 +36,6 @@ class Header extends StatelessWidget implements PreferredSizeWidget {
     );
   }
 
-  _openSearchScreen(BuildContext context) {
-    Navigator.push(context, MaterialPageRoute(builder: (context) => const SearchScreen()));
-  }
   
 }
 

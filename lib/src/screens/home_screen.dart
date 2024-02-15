@@ -1,5 +1,5 @@
-import 'package:app_develop/src/components/header.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -11,13 +11,13 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
+    return Scaffold(
       body:  SafeArea(
-        child: Column(
-          children: [
-            Text("HomeScreen"),
-          ],
+        child: Center(
+          child: ElevatedButton(onPressed: ()=> context.push('/home/contents'), child: const Text('コンテンツ画面に移動'),
+
         ),
+      ),
       ),
     );
   }

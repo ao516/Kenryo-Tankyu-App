@@ -12,11 +12,7 @@ class _LibraryScreenState extends State<LibraryScreen> {
   Widget build(BuildContext context) {
     return const Scaffold(
       body: SafeArea(
-        child: Column(
-          children: [
-            Text('library screen'),
-          ],
-        ),
+        child: Center(child: Text('ライブラリ画面'))
       ),
     );
   }
