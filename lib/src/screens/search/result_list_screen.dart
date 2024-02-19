@@ -10,7 +10,7 @@ class ResultListScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return PopScope(
       canPop: false,
-        onPopInvoked: (didPop) async => context.go('/home'), //TODO homeじゃだめ、使っていたボトムナビゲーションに戻りたい。
+        onPopInvoked: (didPop) async => context.go('/'), //TODO homeじゃだめ、使っていたボトムナビゲーションに戻りたい。
       child: Scaffold(
         appBar: ResultHeader(searchWord: resultWord),
         body:  SafeArea(

@@ -1,3 +1,5 @@
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
@@ -15,18 +17,19 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
   Widget build(BuildContext context) {
     final userController = ref.read(userProvider.notifier);
     return Scaffold(
-      body:  SafeArea(
+      body: SafeArea(
         child: Center(
           child: Column(
             children: [
-              ElevatedButton(onPressed: ()=> context.push('/home/contents'), child: const Text('コンテンツ画面に移動')
-                      ),
-              ElevatedButton(onPressed: ()=> userController.logOut(), child: const Text('ログアウト')
-              ),
-
+              ElevatedButton(
+                  onPressed: () => context.push('/home/contents'),
+                  child: const Text('コンテンツ画面に移動')),
+              ElevatedButton(
+                  onPressed: () => userController.logOut(),
+                  child: const Text('ログアウト')),
             ],
           ),
-      ),
+        ),
       ),
     );
   }
